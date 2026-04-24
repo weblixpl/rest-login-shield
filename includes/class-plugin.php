@@ -22,6 +22,9 @@ class RLS_Plugin
         if (!empty($settings['protect_brute_force'])) {
             new RLS_Brute_Force($settings);
         }
+        if (!empty($settings['disable_comments'])) {
+            new RLS_Comments_Guard();
+        }
         if (is_admin()) {
             new RLS_Settings();
         }
@@ -48,6 +51,7 @@ class RLS_Plugin
             'lockout_minutes'       => 30,
             'ip_whitelist'          => '',
             'trusted_proxy'         => 'none',
+            'disable_comments'      => 0,
         ];
     }
 }

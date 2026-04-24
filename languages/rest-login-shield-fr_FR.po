@@ -135,3 +135,12 @@ msgstr "Load balancer (X-Forwarded-For)"
 
 msgid "Only change this if your site is behind a reverse proxy or CDN. Leaving it as \"None\" on a directly-exposed site is the safe choice — enabling a proxy header without an actual proxy lets attackers spoof their IP and bypass brute force protection."
 msgstr "Ne modifiez ceci que si votre site est derrière un reverse proxy ou un CDN. Laisser « Aucun » sur un site directement exposé est le choix sûr — activer un en-tête de proxy sans proxy réel permet aux attaquants de falsifier leur IP et de contourner la protection contre la force brute."
+
+msgid "Disable comments"
+msgstr "Désactiver les commentaires"
+
+msgid "Completely disable comments sitewide"
+msgstr "Désactiver complètement les commentaires sur tout le site"
+
+msgid "Blocks new comment submissions via forms, REST API, and XML-RPC. Hides the comment UI in the admin and on the frontend. Disables pingbacks and trackbacks. Existing comments are preserved but will not be displayed."
+msgstr "Bloque les nouveaux commentaires soumis via les formulaires, l’API REST et XML-RPC. Masque l’interface des commentaires dans l’administration et sur le site. Désactive les pingbacks et les trackbacks. Les commentaires existants sont conservés mais ne sont pas affichés."

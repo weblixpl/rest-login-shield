@@ -4,7 +4,7 @@ Tags: security, brute force, rest api, login, hardening
 Requires at least: 5.8
 Tested up to: 6.5
 Requires PHP: 7.4
-Stable tag: 1.0.1
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -54,6 +54,10 @@ Yes. The plugin reads the client IP from `CF-Connecting-IP`, `X-Real-IP`, or `X-
 Push a new tag or GitHub release to `weblixpl/rest-login-shield`. Within 12 hours, every site where the plugin is installed will show an update notification in the WordPress admin, exactly like a plugin from the official repository.
 
 == Changelog ==
+
+= 1.1.0 =
+* New protection: **Disable comments** — optional toggle that completely removes the comment system sitewide. Blocks new submissions via forms, REST API (`/wp-json/wp/v2/comments`), and XML-RPC (`wp.newComment`, pingbacks). Hides the comment UI in the admin and on the frontend, disables pingbacks/trackbacks, and removes comment-related dashboard widgets. Existing comments are preserved (not deleted). Default: off.
+* Translations for the new UI in all six supported languages.
 
 = 1.0.1 =
 * **Security fix**: `get_client_ip()` no longer trusts `CF-Connecting-IP`, `X-Real-IP`, or `X-Forwarded-For` headers by default. On a directly-exposed site these headers could be spoofed to bypass brute force lockout. A new **Trusted proxy** setting lets admins opt in (None / Cloudflare / X-Real-IP / X-Forwarded-For). Default is **None** — safe for sites not behind a proxy. Upgrade is strongly recommended.

@@ -87,6 +87,7 @@ class RLS_Settings
             'lockout_minutes'       => isset($raw['lockout_minutes']) ? max(1, min(1440, (int) $raw['lockout_minutes'])) : $defaults['lockout_minutes'],
             'ip_whitelist'          => isset($raw['ip_whitelist']) ? $this->sanitize_whitelist($raw['ip_whitelist']) : '',
             'trusted_proxy'         => isset($raw['trusted_proxy']) && in_array($raw['trusted_proxy'], RLS_IP_Helper::proxy_options(), true) ? $raw['trusted_proxy'] : 'none',
+            'disable_comments'      => !empty($raw['disable_comments']) ? 1 : 0,
         ];
 
         update_option(RLS_Plugin::OPTION_KEY, $new);
@@ -175,6 +176,14 @@ class RLS_Settings
                         <td>
                             <label><input type="checkbox" name="rls_settings[protect_brute_force]" value="1" <?php checked($settings['protect_brute_force'], 1); ?>>
                                 <?php esc_html_e('Lock out IPs after too many failed login attempts', 'rest-login-shield'); ?></label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><?php esc_html_e('Disable comments', 'rest-login-shield'); ?></th>
+                        <td>
+                            <label><input type="checkbox" name="rls_settings[disable_comments]" value="1" <?php checked($settings['disable_comments'], 1); ?>>
+                                <?php esc_html_e('Completely disable comments sitewide', 'rest-login-shield'); ?></label>
+                            <p class="description"><?php esc_html_e('Blocks new comment submissions via forms, REST API, and XML-RPC. Hides the comment UI in the admin and on the frontend. Disables pingbacks and trackbacks. Existing comments are preserved but will not be displayed.', 'rest-login-shield'); ?></p>
                         </td>
                     </tr>
                 </table>

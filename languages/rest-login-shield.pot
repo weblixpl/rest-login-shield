@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: REST & Login Shield 1.0.1\n"
+"Project-Id-Version: REST & Login Shield 1.1.0\n"
 "Report-Msgid-Bugs-To: https://github.com/weblixpl/rest-login-shield/issues\n"
-"POT-Creation-Date: 2026-04-25 00:26+0200\n"
+"POT-Creation-Date: 2026-04-25 00:31+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,7 +23,7 @@ msgid "Too many failed login attempts. Try again in %d minutes."
 msgstr ""
 
 #: includes/class-settings.php:22 includes/class-settings.php:23
-#: includes/class-settings.php:132
+#: includes/class-settings.php:133
 msgid "REST & Login Shield"
 msgstr ""
 
@@ -40,98 +40,113 @@ msgstr ""
 msgid "IP %s has been unblocked."
 msgstr ""
 
-#: includes/class-settings.php:93
+#: includes/class-settings.php:94
 msgid "Settings saved."
 msgstr ""
 
-#: includes/class-settings.php:140
+#: includes/class-settings.php:141
 #, php-format
 msgid "Your current IP: %s"
 msgstr ""
 
-#: includes/class-settings.php:150
+#: includes/class-settings.php:151
 msgid "Protections"
 msgstr ""
 
-#: includes/class-settings.php:153
+#: includes/class-settings.php:154
 msgid "REST API user enumeration"
 msgstr ""
 
-#: includes/class-settings.php:156
+#: includes/class-settings.php:157
 msgid "Hide /wp-json/wp/v2/users for unauthenticated requests"
 msgstr ""
 
-#: includes/class-settings.php:160
+#: includes/class-settings.php:161
 msgid "REST API metadata"
 msgstr ""
 
-#: includes/class-settings.php:163
+#: includes/class-settings.php:164
 msgid "Strip description, gmt_offset, timezone_string from /wp-json/"
 msgstr ""
 
-#: includes/class-settings.php:167
+#: includes/class-settings.php:168
 msgid "Author enumeration"
 msgstr ""
 
-#: includes/class-settings.php:170
+#: includes/class-settings.php:171
 msgid "Redirect ?author=N requests to the home page"
 msgstr ""
 
-#: includes/class-settings.php:174
+#: includes/class-settings.php:175
 msgid "Brute force protection"
 msgstr ""
 
-#: includes/class-settings.php:177
+#: includes/class-settings.php:178
 msgid "Lock out IPs after too many failed login attempts"
 msgstr ""
 
 #: includes/class-settings.php:182
-msgid "Brute force settings"
+msgid "Disable comments"
 msgstr ""
 
 #: includes/class-settings.php:185
+msgid "Completely disable comments sitewide"
+msgstr ""
+
+#: includes/class-settings.php:186
+msgid ""
+"Blocks new comment submissions via forms, REST API, and XML-RPC. Hides the "
+"comment UI in the admin and on the frontend. Disables pingbacks and "
+"trackbacks. Existing comments are preserved but will not be displayed."
+msgstr ""
+
+#: includes/class-settings.php:191
+msgid "Brute force settings"
+msgstr ""
+
+#: includes/class-settings.php:194
 msgid "Max failed attempts"
 msgstr ""
 
-#: includes/class-settings.php:188
+#: includes/class-settings.php:197
 msgid "Number of failed login attempts allowed before lockout."
 msgstr ""
 
-#: includes/class-settings.php:192
+#: includes/class-settings.php:201
 msgid "Lockout duration (minutes)"
 msgstr ""
 
-#: includes/class-settings.php:198
+#: includes/class-settings.php:207
 msgid "IP whitelist"
 msgstr ""
 
-#: includes/class-settings.php:201
+#: includes/class-settings.php:210
 msgid ""
 "One entry per line. Supports single IPv4/IPv6 or CIDR (e.g. 192.168.1.0/24). "
 "Lines starting with # are comments."
 msgstr ""
 
-#: includes/class-settings.php:205
+#: includes/class-settings.php:214
 msgid "Trusted proxy"
 msgstr ""
 
-#: includes/class-settings.php:208
+#: includes/class-settings.php:217
 msgid "None (use REMOTE_ADDR)"
 msgstr ""
 
-#: includes/class-settings.php:209
+#: includes/class-settings.php:218
 msgid "Cloudflare (CF-Connecting-IP)"
 msgstr ""
 
-#: includes/class-settings.php:210
+#: includes/class-settings.php:219
 msgid "Nginx / generic proxy (X-Real-IP)"
 msgstr ""
 
-#: includes/class-settings.php:211
+#: includes/class-settings.php:220
 msgid "Load balancer (X-Forwarded-For)"
 msgstr ""
 
-#: includes/class-settings.php:218
+#: includes/class-settings.php:227
 msgid ""
 "Only change this if your site is behind a reverse proxy or CDN. Leaving it "
 "as \"None\" on a directly-exposed site is the safe choice — enabling a proxy "
@@ -139,62 +154,62 @@ msgid ""
 "brute force protection."
 msgstr ""
 
-#: includes/class-settings.php:223
+#: includes/class-settings.php:232
 msgid "Save settings"
 msgstr ""
 
-#: includes/class-settings.php:228
+#: includes/class-settings.php:237
 msgid "Currently blocked IPs"
 msgstr ""
 
-#: includes/class-settings.php:230
+#: includes/class-settings.php:239
 msgid "No IPs are currently blocked."
 msgstr ""
 
-#: includes/class-settings.php:235 includes/class-settings.php:271
+#: includes/class-settings.php:244 includes/class-settings.php:280
 msgid "IP address"
 msgstr ""
 
-#: includes/class-settings.php:236
+#: includes/class-settings.php:245
 msgid "Failed attempts"
 msgstr ""
 
-#: includes/class-settings.php:237
+#: includes/class-settings.php:246
 msgid "Last attempt"
 msgstr ""
 
-#: includes/class-settings.php:238
+#: includes/class-settings.php:247
 msgid "Action"
 msgstr ""
 
-#: includes/class-settings.php:252
+#: includes/class-settings.php:261
 msgid "Unblock"
 msgstr ""
 
-#: includes/class-settings.php:263
+#: includes/class-settings.php:272
 msgid "Recent failed login attempts"
 msgstr ""
 
-#: includes/class-settings.php:265
+#: includes/class-settings.php:274
 msgid "No failed login attempts recorded yet."
 msgstr ""
 
-#: includes/class-settings.php:270
+#: includes/class-settings.php:279
 msgid "Date"
 msgstr ""
 
-#: includes/class-settings.php:272
+#: includes/class-settings.php:281
 msgid "Username tried"
 msgstr ""
 
-#: includes/class-settings.php:273
+#: includes/class-settings.php:282
 msgid "Blocked"
 msgstr ""
 
-#: includes/class-settings.php:282
+#: includes/class-settings.php:291
 msgid "Yes"
 msgstr ""
 
-#: includes/class-settings.php:282
+#: includes/class-settings.php:291
 msgid "No"
 msgstr ""
