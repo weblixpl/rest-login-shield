@@ -1,0 +1,34 @@
+# Dependencies
+# Note: /vendor/ IS committed — plugin ships with plugin-update-checker library
+/node_modules/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build
+/build/
+/dist/
+*.zip
+
+# Logs
+*.log
+
+# Environment
+.env
+.env.local
+
+# PHPUnit
+.phpunit.result.cache
+/coverage/
+
+# Translations — compiled .mo files are committed; generated backups are not
+*.mo~
+*.po~

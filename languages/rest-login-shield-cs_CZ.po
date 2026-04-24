@@ -1,0 +1,119 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: REST & Login Shield 1.0.0\n"
+"Language: cs_CZ\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+
+msgid "Too many failed login attempts. Try again in %d minutes."
+msgstr "Příliš mnoho neúspěšných pokusů o přihlášení. Zkuste to znovu za %d min."
+
+msgid "REST & Login Shield"
+msgstr "REST & Login Shield"
+
+msgid "Settings"
+msgstr "Nastavení"
+
+msgid "You do not have permission to perform this action."
+msgstr "Nemáte oprávnění provést tuto akci."
+
+msgid "IP %s has been unblocked."
+msgstr "IP adresa %s byla odblokována."
+
+msgid "Settings saved."
+msgstr "Nastavení uloženo."
+
+msgid "Your current IP: %s"
+msgstr "Vaše aktuální IP adresa: %s"
+
+msgid "Protections"
+msgstr "Ochrana"
+
+msgid "REST API user enumeration"
+msgstr "Výčet uživatelů přes REST API"
+
+msgid "Hide /wp-json/wp/v2/users for unauthenticated requests"
+msgstr "Skrýt /wp-json/wp/v2/users pro nepřihlášené požadavky"
+
+msgid "REST API metadata"
+msgstr "Metadata REST API"
+
+msgid "Strip description, gmt_offset, timezone_string from /wp-json/"
+msgstr "Odstranit description, gmt_offset, timezone_string z /wp-json/"
+
+msgid "Author enumeration"
+msgstr "Výčet autorů"
+
+msgid "Redirect ?author=N requests to the home page"
+msgstr "Přesměrovat požadavky ?author=N na hlavní stránku"
+
+msgid "Brute force protection"
+msgstr "Ochrana proti útoku hrubou silou"
+
+msgid "Lock out IPs after too many failed login attempts"
+msgstr "Blokovat IP adresy po příliš mnoha neúspěšných pokusech o přihlášení"
+
+msgid "Brute force settings"
+msgstr "Nastavení ochrany proti brute force"
+
+msgid "Max failed attempts"
+msgstr "Max. neúspěšných pokusů"
+
+msgid "Number of failed login attempts allowed before lockout."
+msgstr "Počet povolených neúspěšných pokusů o přihlášení před zablokováním."
+
+msgid "Lockout duration (minutes)"
+msgstr "Doba blokování (v minutách)"
+
+msgid "IP whitelist"
+msgstr "Bílá listina IP"
+
+msgid "One entry per line. Supports single IPv4/IPv6 or CIDR (e.g. 192.168.1.0/24). Lines starting with # are comments."
+msgstr "Jeden záznam na řádek. Podporuje jednotlivé IPv4/IPv6 nebo CIDR (např. 192.168.1.0/24). Řádky začínající # jsou komentáře."
+
+msgid "Save settings"
+msgstr "Uložit nastavení"
+
+msgid "Currently blocked IPs"
+msgstr "Aktuálně blokované IP"
+
+msgid "No IPs are currently blocked."
+msgstr "V současné době nejsou blokovány žádné IP."
+
+msgid "IP address"
+msgstr "IP adresa"
+
+msgid "Failed attempts"
+msgstr "Neúspěšné pokusy"
+
+msgid "Last attempt"
+msgstr "Poslední pokus"
+
+msgid "Action"
+msgstr "Akce"
+
+msgid "Unblock"
+msgstr "Odblokovat"
+
+msgid "Recent failed login attempts"
+msgstr "Poslední neúspěšné pokusy o přihlášení"
+
+msgid "No failed login attempts recorded yet."
+msgstr "Zatím nebyly zaznamenány žádné neúspěšné pokusy o přihlášení."
+
+msgid "Date"
+msgstr "Datum"
+
+msgid "Username tried"
+msgstr "Zkoušené uživatelské jméno"
+
+msgid "Blocked"
+msgstr "Blokováno"
+
+msgid "Yes"
+msgstr "Ano"
+
+msgid "No"
+msgstr "Ne"

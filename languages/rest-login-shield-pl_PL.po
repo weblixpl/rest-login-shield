@@ -1,0 +1,119 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: REST & Login Shield 1.0.0\n"
+"Language: pl_PL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+msgid "Too many failed login attempts. Try again in %d minutes."
+msgstr "Za dużo nieudanych prób logowania. Spróbuj ponownie za %d min."
+
+msgid "REST & Login Shield"
+msgstr "REST & Login Shield"
+
+msgid "Settings"
+msgstr "Ustawienia"
+
+msgid "You do not have permission to perform this action."
+msgstr "Nie masz uprawnień do wykonania tej akcji."
+
+msgid "IP %s has been unblocked."
+msgstr "Adres IP %s został odblokowany."
+
+msgid "Settings saved."
+msgstr "Ustawienia zapisane."
+
+msgid "Your current IP: %s"
+msgstr "Twój aktualny adres IP: %s"
+
+msgid "Protections"
+msgstr "Ochrona"
+
+msgid "REST API user enumeration"
+msgstr "Enumeracja użytkowników przez REST API"
+
+msgid "Hide /wp-json/wp/v2/users for unauthenticated requests"
+msgstr "Ukryj /wp-json/wp/v2/users dla niezalogowanych użytkowników"
+
+msgid "REST API metadata"
+msgstr "Metadane REST API"
+
+msgid "Strip description, gmt_offset, timezone_string from /wp-json/"
+msgstr "Usuń description, gmt_offset, timezone_string z /wp-json/"
+
+msgid "Author enumeration"
+msgstr "Enumeracja autorów"
+
+msgid "Redirect ?author=N requests to the home page"
+msgstr "Przekieruj żądania ?author=N na stronę główną"
+
+msgid "Brute force protection"
+msgstr "Ochrona przed brute force"
+
+msgid "Lock out IPs after too many failed login attempts"
+msgstr "Blokuj adresy IP po zbyt wielu nieudanych próbach logowania"
+
+msgid "Brute force settings"
+msgstr "Ustawienia brute force"
+
+msgid "Max failed attempts"
+msgstr "Maks. liczba nieudanych prób"
+
+msgid "Number of failed login attempts allowed before lockout."
+msgstr "Liczba dozwolonych nieudanych prób logowania przed blokadą."
+
+msgid "Lockout duration (minutes)"
+msgstr "Czas blokady (w minutach)"
+
+msgid "IP whitelist"
+msgstr "Biała lista IP"
+
+msgid "One entry per line. Supports single IPv4/IPv6 or CIDR (e.g. 192.168.1.0/24). Lines starting with # are comments."
+msgstr "Jeden wpis na linię. Obsługuje pojedyncze IPv4/IPv6 lub CIDR (np. 192.168.1.0/24). Linie zaczynające się od # to komentarze."
+
+msgid "Save settings"
+msgstr "Zapisz ustawienia"
+
+msgid "Currently blocked IPs"
+msgstr "Aktualnie zablokowane adresy IP"
+
+msgid "No IPs are currently blocked."
+msgstr "Obecnie żaden adres IP nie jest zablokowany."
+
+msgid "IP address"
+msgstr "Adres IP"
+
+msgid "Failed attempts"
+msgstr "Nieudane próby"
+
+msgid "Last attempt"
+msgstr "Ostatnia próba"
+
+msgid "Action"
+msgstr "Akcja"
+
+msgid "Unblock"
+msgstr "Odblokuj"
+
+msgid "Recent failed login attempts"
+msgstr "Ostatnie nieudane próby logowania"
+
+msgid "No failed login attempts recorded yet."
+msgstr "Brak zarejestrowanych nieudanych prób logowania."
+
+msgid "Date"
+msgstr "Data"
+
+msgid "Username tried"
+msgstr "Próbowany login"
+
+msgid "Blocked"
+msgstr "Zablokowano"
+
+msgid "Yes"
+msgstr "Tak"
+
+msgid "No"
+msgstr "Nie"

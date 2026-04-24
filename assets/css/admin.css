@@ -1,0 +1,31 @@
+.rls-wrap .form-table th {
+    width: 240px;
+}
+
+.rls-wrap h2 {
+    margin-top: 2em;
+}
+
+.rls-wrap hr {
+    margin: 2em 0;
+    border: 0;
+    border-top: 1px solid #dcdcde;
+}
+
+.rls-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.rls-badge-blocked {
+    background: #fcf0f1;
+    color: #8a1f11;
+}
+
+.rls-wrap table.widefat code {
+    font-size: 12px;
+}

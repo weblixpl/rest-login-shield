@@ -1,0 +1,172 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR weblixpl
+# This file is distributed under the same license as the REST & Login Shield package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: REST & Login Shield 1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/weblixpl/rest-login-shield/issues\n"
+"POT-Creation-Date: 2026-04-24 23:55+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: includes/class-brute-force.php:41
+#, php-format
+msgid "Too many failed login attempts. Try again in %d minutes."
+msgstr ""
+
+#: includes/class-settings.php:22 includes/class-settings.php:23
+#: includes/class-settings.php:131
+msgid "REST & Login Shield"
+msgstr ""
+
+#: includes/class-settings.php:33
+msgid "Settings"
+msgstr ""
+
+#: includes/class-settings.php:52
+msgid "You do not have permission to perform this action."
+msgstr ""
+
+#: includes/class-settings.php:65
+#, php-format
+msgid "IP %s has been unblocked."
+msgstr ""
+
+#: includes/class-settings.php:92
+msgid "Settings saved."
+msgstr ""
+
+#: includes/class-settings.php:139
+#, php-format
+msgid "Your current IP: %s"
+msgstr ""
+
+#: includes/class-settings.php:149
+msgid "Protections"
+msgstr ""
+
+#: includes/class-settings.php:152
+msgid "REST API user enumeration"
+msgstr ""
+
+#: includes/class-settings.php:155
+msgid "Hide /wp-json/wp/v2/users for unauthenticated requests"
+msgstr ""
+
+#: includes/class-settings.php:159
+msgid "REST API metadata"
+msgstr ""
+
+#: includes/class-settings.php:162
+msgid "Strip description, gmt_offset, timezone_string from /wp-json/"
+msgstr ""
+
+#: includes/class-settings.php:166
+msgid "Author enumeration"
+msgstr ""
+
+#: includes/class-settings.php:169
+msgid "Redirect ?author=N requests to the home page"
+msgstr ""
+
+#: includes/class-settings.php:173
+msgid "Brute force protection"
+msgstr ""
+
+#: includes/class-settings.php:176
+msgid "Lock out IPs after too many failed login attempts"
+msgstr ""
+
+#: includes/class-settings.php:181
+msgid "Brute force settings"
+msgstr ""
+
+#: includes/class-settings.php:184
+msgid "Max failed attempts"
+msgstr ""
+
+#: includes/class-settings.php:187
+msgid "Number of failed login attempts allowed before lockout."
+msgstr ""
+
+#: includes/class-settings.php:191
+msgid "Lockout duration (minutes)"
+msgstr ""
+
+#: includes/class-settings.php:197
+msgid "IP whitelist"
+msgstr ""
+
+#: includes/class-settings.php:200
+msgid ""
+"One entry per line. Supports single IPv4/IPv6 or CIDR (e.g. 192.168.1.0/24). "
+"Lines starting with # are comments."
+msgstr ""
+
+#: includes/class-settings.php:205
+msgid "Save settings"
+msgstr ""
+
+#: includes/class-settings.php:210
+msgid "Currently blocked IPs"
+msgstr ""
+
+#: includes/class-settings.php:212
+msgid "No IPs are currently blocked."
+msgstr ""
+
+#: includes/class-settings.php:217 includes/class-settings.php:253
+msgid "IP address"
+msgstr ""
+
+#: includes/class-settings.php:218
+msgid "Failed attempts"
+msgstr ""
+
+#: includes/class-settings.php:219
+msgid "Last attempt"
+msgstr ""
+
+#: includes/class-settings.php:220
+msgid "Action"
+msgstr ""
+
+#: includes/class-settings.php:234
+msgid "Unblock"
+msgstr ""
+
+#: includes/class-settings.php:245
+msgid "Recent failed login attempts"
+msgstr ""
+
+#: includes/class-settings.php:247
+msgid "No failed login attempts recorded yet."
+msgstr ""
+
+#: includes/class-settings.php:252
+msgid "Date"
+msgstr ""
+
+#: includes/class-settings.php:254
+msgid "Username tried"
+msgstr ""
+
+#: includes/class-settings.php:255
+msgid "Blocked"
+msgstr ""
+
+#: includes/class-settings.php:264
+msgid "Yes"
+msgstr ""
+
+#: includes/class-settings.php:264
+msgid "No"
+msgstr ""

@@ -1,0 +1,119 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: REST & Login Shield 1.0.0\n"
+"Language: da_DK\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Too many failed login attempts. Try again in %d minutes."
+msgstr "For mange mislykkede loginforsøg. Prøv igen om %d minutter."
+
+msgid "REST & Login Shield"
+msgstr "REST & Login Shield"
+
+msgid "Settings"
+msgstr "Indstillinger"
+
+msgid "You do not have permission to perform this action."
+msgstr "Du har ikke tilladelse til at udføre denne handling."
+
+msgid "IP %s has been unblocked."
+msgstr "IP %s er blevet låst op."
+
+msgid "Settings saved."
+msgstr "Indstillinger gemt."
+
+msgid "Your current IP: %s"
+msgstr "Din aktuelle IP: %s"
+
+msgid "Protections"
+msgstr "Beskyttelser"
+
+msgid "REST API user enumeration"
+msgstr "Brugerenumeration via REST API"
+
+msgid "Hide /wp-json/wp/v2/users for unauthenticated requests"
+msgstr "Skjul /wp-json/wp/v2/users for ikke-godkendte forespørgsler"
+
+msgid "REST API metadata"
+msgstr "REST API-metadata"
+
+msgid "Strip description, gmt_offset, timezone_string from /wp-json/"
+msgstr "Fjern description, gmt_offset, timezone_string fra /wp-json/"
+
+msgid "Author enumeration"
+msgstr "Forfatterenumeration"
+
+msgid "Redirect ?author=N requests to the home page"
+msgstr "Omdiriger ?author=N-forespørgsler til forsiden"
+
+msgid "Brute force protection"
+msgstr "Beskyttelse mod brute force"
+
+msgid "Lock out IPs after too many failed login attempts"
+msgstr "Bloker IP-adresser efter for mange mislykkede loginforsøg"
+
+msgid "Brute force settings"
+msgstr "Brute force-indstillinger"
+
+msgid "Max failed attempts"
+msgstr "Maks. mislykkede forsøg"
+
+msgid "Number of failed login attempts allowed before lockout."
+msgstr "Antal tilladte mislykkede loginforsøg inden blokering."
+
+msgid "Lockout duration (minutes)"
+msgstr "Blokeringens varighed (minutter)"
+
+msgid "IP whitelist"
+msgstr "IP-hvidliste"
+
+msgid "One entry per line. Supports single IPv4/IPv6 or CIDR (e.g. 192.168.1.0/24). Lines starting with # are comments."
+msgstr "Én post pr. linje. Understøtter enkelt IPv4/IPv6 eller CIDR (f.eks. 192.168.1.0/24). Linjer, der starter med #, er kommentarer."
+
+msgid "Save settings"
+msgstr "Gem indstillinger"
+
+msgid "Currently blocked IPs"
+msgstr "Aktuelt blokerede IP-adresser"
+
+msgid "No IPs are currently blocked."
+msgstr "Ingen IP-adresser er blokeret i øjeblikket."
+
+msgid "IP address"
+msgstr "IP-adresse"
+
+msgid "Failed attempts"
+msgstr "Mislykkede forsøg"
+
+msgid "Last attempt"
+msgstr "Seneste forsøg"
+
+msgid "Action"
+msgstr "Handling"
+
+msgid "Unblock"
+msgstr "Lås op"
+
+msgid "Recent failed login attempts"
+msgstr "Seneste mislykkede loginforsøg"
+
+msgid "No failed login attempts recorded yet."
+msgstr "Ingen mislykkede loginforsøg registreret endnu."
+
+msgid "Date"
+msgstr "Dato"
+
+msgid "Username tried"
+msgstr "Forsøgt brugernavn"
+
+msgid "Blocked"
+msgstr "Blokeret"
+
+msgid "Yes"
+msgstr "Ja"
+
+msgid "No"
+msgstr "Nej"
