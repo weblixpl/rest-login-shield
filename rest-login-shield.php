@@ -3,7 +3,7 @@
  * Plugin Name:       REST & Login Shield
  * Plugin URI:        https://github.com/weblixpl/rest-login-shield
  * Description:       Minimal security hardening: blocks REST API user enumeration, hides server metadata, and protects wp-login.php against brute force attacks.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Requires at least: 5.8
  * Requires PHP:      7.4
  * Author:            weblixpl
@@ -18,7 +18,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-define('RLS_VERSION', '1.0.0');
+define('RLS_VERSION', '1.0.1');
 define('RLS_FILE', __FILE__);
 define('RLS_PATH', plugin_dir_path(__FILE__));
 define('RLS_URL', plugin_dir_url(__FILE__));

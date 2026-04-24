@@ -117,3 +117,21 @@ msgstr "Oui"
 
 msgid "No"
 msgstr "Non"
+
+msgid "Trusted proxy"
+msgstr "Proxy de confiance"
+
+msgid "None (use REMOTE_ADDR)"
+msgstr "Aucun (utiliser REMOTE_ADDR)"
+
+msgid "Cloudflare (CF-Connecting-IP)"
+msgstr "Cloudflare (CF-Connecting-IP)"
+
+msgid "Nginx / generic proxy (X-Real-IP)"
+msgstr "Nginx / proxy générique (X-Real-IP)"
+
+msgid "Load balancer (X-Forwarded-For)"
+msgstr "Load balancer (X-Forwarded-For)"
+
+msgid "Only change this if your site is behind a reverse proxy or CDN. Leaving it as \"None\" on a directly-exposed site is the safe choice — enabling a proxy header without an actual proxy lets attackers spoof their IP and bypass brute force protection."
+msgstr "Ne modifiez ceci que si votre site est derrière un reverse proxy ou un CDN. Laisser « Aucun » sur un site directement exposé est le choix sûr — activer un en-tête de proxy sans proxy réel permet aux attaquants de falsifier leur IP et de contourner la protection contre la force brute."

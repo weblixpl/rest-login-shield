@@ -86,6 +86,7 @@ class RLS_Settings
             'max_attempts'          => isset($raw['max_attempts']) ? max(1, min(50, (int) $raw['max_attempts'])) : $defaults['max_attempts'],
             'lockout_minutes'       => isset($raw['lockout_minutes']) ? max(1, min(1440, (int) $raw['lockout_minutes'])) : $defaults['lockout_minutes'],
             'ip_whitelist'          => isset($raw['ip_whitelist']) ? $this->sanitize_whitelist($raw['ip_whitelist']) : '',
+            'trusted_proxy'         => isset($raw['trusted_proxy']) && in_array($raw['trusted_proxy'], RLS_IP_Helper::proxy_options(), true) ? $raw['trusted_proxy'] : 'none',
         ];
 
         update_option(RLS_Plugin::OPTION_KEY, $new);
@@ -125,7 +126,7 @@ class RLS_Settings
         $settings     = RLS_Plugin::get_settings();
         $blocked_ips  = RLS_Brute_Force::get_blocked_ips((int) $settings['max_attempts']);
         $log          = RLS_Brute_Force::get_recent_log(50);
-        $current_ip   = RLS_IP_Helper::get_client_ip();
+        $current_ip   = RLS_IP_Helper::get_client_ip($settings['trusted_proxy']);
         ?>
         <div class="wrap rls-wrap">
             <h1><?php esc_html_e('REST & Login Shield', 'rest-login-shield'); ?></h1>
@@ -198,6 +199,23 @@ class RLS_Settings
                         <td>
                             <textarea id="rls_ip_whitelist" name="rls_settings[ip_whitelist]" rows="5" cols="40" class="large-text code"><?php echo esc_textarea($settings['ip_whitelist']); ?></textarea>
                             <p class="description"><?php esc_html_e('One entry per line. Supports single IPv4/IPv6 or CIDR (e.g. 192.168.1.0/24). Lines starting with # are comments.', 'rest-login-shield'); ?></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><label for="rls_trusted_proxy"><?php esc_html_e('Trusted proxy', 'rest-login-shield'); ?></label></th>
+                        <td>
+                            <?php $proxy_labels = [
+                                'none'            => __('None (use REMOTE_ADDR)', 'rest-login-shield'),
+                                'cloudflare'      => __('Cloudflare (CF-Connecting-IP)', 'rest-login-shield'),
+                                'x-real-ip'       => __('Nginx / generic proxy (X-Real-IP)', 'rest-login-shield'),
+                                'x-forwarded-for' => __('Load balancer (X-Forwarded-For)', 'rest-login-shield'),
+                            ]; ?>
+                            <select id="rls_trusted_proxy" name="rls_settings[trusted_proxy]">
+                                <?php foreach ($proxy_labels as $value => $label) : ?>
+                                    <option value="<?php echo esc_attr($value); ?>" <?php selected($settings['trusted_proxy'], $value); ?>><?php echo esc_html($label); ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                            <p class="description"><?php esc_html_e('Only change this if your site is behind a reverse proxy or CDN. Leaving it as "None" on a directly-exposed site is the safe choice — enabling a proxy header without an actual proxy lets attackers spoof their IP and bypass brute force protection.', 'rest-login-shield'); ?></p>
                         </td>
                     </tr>
                 </table>

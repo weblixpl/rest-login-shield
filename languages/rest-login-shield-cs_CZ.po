@@ -117,3 +117,21 @@ msgstr "Ano"
 
 msgid "No"
 msgstr "Ne"
+
+msgid "Trusted proxy"
+msgstr "Důvěryhodná proxy"
+
+msgid "None (use REMOTE_ADDR)"
+msgstr "Žádná (použít REMOTE_ADDR)"
+
+msgid "Cloudflare (CF-Connecting-IP)"
+msgstr "Cloudflare (CF-Connecting-IP)"
+
+msgid "Nginx / generic proxy (X-Real-IP)"
+msgstr "Nginx / obecná proxy (X-Real-IP)"
+
+msgid "Load balancer (X-Forwarded-For)"
+msgstr "Load balancer (X-Forwarded-For)"
+
+msgid "Only change this if your site is behind a reverse proxy or CDN. Leaving it as \"None\" on a directly-exposed site is the safe choice — enabling a proxy header without an actual proxy lets attackers spoof their IP and bypass brute force protection."
+msgstr "Toto změňte pouze tehdy, pokud je váš web za reverzní proxy nebo CDN. Ponechat „Žádná\" na přímo vystaveném webu je bezpečná volba — povolení proxy hlavičky bez skutečné proxy umožňuje útočníkům podvrhnout jejich IP a obejít ochranu proti brute force."

@@ -47,6 +47,7 @@ class RLS_Plugin
             'max_attempts'          => 5,
             'lockout_minutes'       => 30,
             'ip_whitelist'          => '',
+            'trusted_proxy'         => 'none',
         ];
     }
 }

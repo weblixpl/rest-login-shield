@@ -5,32 +5,46 @@ if (!defined('ABSPATH')) {
 
 class RLS_IP_Helper
 {
-    public static function get_client_ip()
+    // Returns the client IP, honoring a trusted proxy header only when
+    // the admin has explicitly opted in. Trusting proxy headers on a
+    // directly-exposed site lets an attacker spoof their IP and bypass
+    // brute force protection.
+    public static function get_client_ip($trusted_proxy = 'none')
     {
-        $candidates = [];
+        $remote = !empty($_SERVER['REMOTE_ADDR']) ? trim($_SERVER['REMOTE_ADDR']) : '';
 
-        if (!empty($_SERVER['HTTP_CF_CONNECTING_IP'])) {
-            $candidates[] = $_SERVER['HTTP_CF_CONNECTING_IP'];
-        }
-        if (!empty($_SERVER['HTTP_X_REAL_IP'])) {
-            $candidates[] = $_SERVER['HTTP_X_REAL_IP'];
-        }
-        if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-            $parts = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
-            $candidates[] = trim($parts[0]);
-        }
-        if (!empty($_SERVER['REMOTE_ADDR'])) {
-            $candidates[] = $_SERVER['REMOTE_ADDR'];
+        $header_value = '';
+        switch ($trusted_proxy) {
+            case 'cloudflare':
+                if (!empty($_SERVER['HTTP_CF_CONNECTING_IP'])) {
+                    $header_value = trim($_SERVER['HTTP_CF_CONNECTING_IP']);
+                }
+                break;
+            case 'x-real-ip':
+                if (!empty($_SERVER['HTTP_X_REAL_IP'])) {
+                    $header_value = trim($_SERVER['HTTP_X_REAL_IP']);
+                }
+                break;
+            case 'x-forwarded-for':
+                if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+                    $parts = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
+                    $header_value = trim($parts[0]);
+                }
+                break;
         }
 
-        foreach ($candidates as $ip) {
-            $ip = trim($ip);
-            if (filter_var($ip, FILTER_VALIDATE_IP)) {
-                return $ip;
-            }
+        if ($header_value !== '' && filter_var($header_value, FILTER_VALIDATE_IP)) {
+            return $header_value;
         }
-
+        if ($remote !== '' && filter_var($remote, FILTER_VALIDATE_IP)) {
+            return $remote;
+        }
         return '';
+    }
+
+    public static function proxy_options()
+    {
+        return ['none', 'cloudflare', 'x-real-ip', 'x-forwarded-for'];
     }
 
     public static function is_whitelisted($ip, $whitelist_text)

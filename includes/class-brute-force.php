@@ -27,7 +27,7 @@ class RLS_Brute_Force
         if (empty($username) && empty($password)) {
             return $user;
         }
-        $ip = RLS_IP_Helper::get_client_ip();
+        $ip = RLS_IP_Helper::get_client_ip($this->settings['trusted_proxy'] ?? 'none');
         if (!$ip || $this->is_whitelisted($ip)) {
             return $user;
         }
@@ -48,7 +48,7 @@ class RLS_Brute_Force
 
     public function on_failure($username)
     {
-        $ip = RLS_IP_Helper::get_client_ip();
+        $ip = RLS_IP_Helper::get_client_ip($this->settings['trusted_proxy'] ?? 'none');
         if (!$ip || $this->is_whitelisted($ip)) {
             return;
         }
@@ -61,7 +61,7 @@ class RLS_Brute_Force
 
     public function on_success($username)
     {
-        $ip = RLS_IP_Helper::get_client_ip();
+        $ip = RLS_IP_Helper::get_client_ip($this->settings['trusted_proxy'] ?? 'none');
         if (!$ip) {
             return;
         }
