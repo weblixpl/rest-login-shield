@@ -1,0 +1,61 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify plugin version matches tag
+        env:
+          TAG_NAME: ${{ github.ref_name }}
+        run: |
+          TAG="${TAG_NAME#v}"
+          HEADER=$(grep -oE "Version:\s*[0-9]+\.[0-9]+\.[0-9]+" rest-login-shield.php | awk '{print $2}')
+          README=$(grep -oE "Stable tag:\s*[0-9]+\.[0-9]+\.[0-9]+" readme.txt | awk '{print $3}')
+          echo "Tag:       $TAG"
+          echo "PHP:       $HEADER"
+          echo "readme:    $README"
+          if [ "$TAG" != "$HEADER" ] || [ "$TAG" != "$README" ]; then
+            echo "::error::Version mismatch. Tag=$TAG, plugin header=$HEADER, readme=$README. Bump all three and re-tag."
+            exit 1
+          fi
+
+      - name: Build distribution ZIP
+        env:
+          TAG_NAME: ${{ github.ref_name }}
+        run: |
+          ZIP_NAME="rest-login-shield-${TAG_NAME#v}.zip"
+          git archive --format=zip --prefix=rest-login-shield/ HEAD -o "$ZIP_NAME"
+          echo "ZIP_NAME=$ZIP_NAME" >> "$GITHUB_ENV"
+          ls -lh "$ZIP_NAME"
+
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG_NAME: ${{ github.ref_name }}
+        run: |
+          NOTES_FILE=$(mktemp)
+          {
+            printf 'Automated release built from tag `%s`.\n\n' "$TAG_NAME"
+            printf '## Installation\n\n'
+            printf 'Upload the `%s` asset below via **Plugins → Add New → Upload Plugin**, then configure under **Settings → REST & Login Shield**.\n\n' "$ZIP_NAME"
+            printf '## Changelog\n\n'
+            awk '/^== Changelog ==/{flag=1; next} /^== /{flag=0} flag' readme.txt | head -40
+          } > "$NOTES_FILE"
+
+          gh release create "$TAG_NAME" \
+            "$ZIP_NAME" \
+            --title "$TAG_NAME" \
+            --notes-file "$NOTES_FILE"
