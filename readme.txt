@@ -4,7 +4,7 @@ Tags: security, brute force, rest api, login, hardening
 Requires at least: 5.8
 Tested up to: 6.5
 Requires PHP: 7.4
-Stable tag: 1.1.0
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,7 +18,7 @@ REST & Login Shield is a small, zero-configuration security plugin that closes t
 
 * **Blocks REST API user enumeration** — returns 404 on `/wp-json/wp/v2/users/` for unauthenticated requests so attackers cannot harvest your usernames.
 * **Hides server metadata** — strips `description`, `gmt_offset`, `timezone_string` from `/wp-json/` to reduce fingerprinting.
-* **Blocks author URL enumeration** — redirects `?author=N` requests to the home page with a 301.
+* **Blocks author URL enumeration** — redirects `?author=N` requests and `/author/USERNAME/` archive pages to the home page with a 301, and masks usernames in RSS feeds (`<dc:creator>`).
 * **Brute force lockout** — after too many failed login attempts from one IP, blocks that IP for a configurable period. IP whitelist with CIDR support is included.
 
 **No bloat:** four protections, one settings page, no third-party calls, no telemetry. Works alongside Wordfence, iThemes Security, and similar plugins without conflicts.
@@ -54,6 +54,12 @@ Yes. The plugin reads the client IP from `CF-Connecting-IP`, `X-Real-IP`, or `X-
 Push a new tag or GitHub release to `weblixpl/rest-login-shield`. Within 12 hours, every site where the plugin is installed will show an update notification in the WordPress admin, exactly like a plugin from the official repository.
 
 == Changelog ==
+
+= 1.2.0 =
+* **Security fix**: author enumeration protection was incomplete. With the toggle enabled, `?author=N` was still being redirected by WordPress core's canonical redirect to `/author/USERNAME/` before the plugin could intercept, leaking the user login. The handler now runs at priority 1 on `template_redirect` and additionally hooks `redirect_canonical` to override core's behavior.
+* **Author archives blocked**: `/author/USERNAME/` pages now return a 301 to the home page when the author enumeration toggle is enabled. Previously these pages returned 200 and confirmed the existence of a username.
+* **RSS feed leak fixed**: `<dc:creator>` in RSS feeds now shows the site name instead of the user login. Previously the feed exposed the WordPress login of every post author to anonymous visitors.
+* Upgrade is strongly recommended for any site visible on the public internet — the three vectors above were actively used to harvest usernames before brute-force attempts.
 
 = 1.1.0 =
 * New protection: **Disable comments** — optional toggle that completely removes the comment system sitewide. Blocks new submissions via forms, REST API (`/wp-json/wp/v2/comments`), and XML-RPC (`wp.newComment`, pingbacks). Hides the comment UI in the admin and on the frontend, disables pingbacks/trackbacks, and removes comment-related dashboard widgets. Existing comments are preserved (not deleted). Default: off.
