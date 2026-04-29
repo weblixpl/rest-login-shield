@@ -22,6 +22,9 @@ class RLS_Plugin
         if (!empty($settings['protect_brute_force'])) {
             new RLS_Brute_Force($settings);
         }
+        if (!empty($settings['protect_login_honeypot'])) {
+            new RLS_Login_Honeypot($settings);
+        }
         if (!empty($settings['disable_comments'])) {
             new RLS_Comments_Guard();
         }
@@ -47,6 +50,7 @@ class RLS_Plugin
             'protect_rest_metadata' => 1,
             'protect_author_enum'   => 1,
             'protect_brute_force'   => 1,
+            'protect_login_honeypot' => 1,
             'max_attempts'          => 5,
             'lockout_minutes'       => 30,
             'ip_whitelist'          => '',

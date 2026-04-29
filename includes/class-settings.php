@@ -83,6 +83,7 @@ class RLS_Settings
             'protect_rest_metadata' => !empty($raw['protect_rest_metadata']) ? 1 : 0,
             'protect_author_enum'   => !empty($raw['protect_author_enum']) ? 1 : 0,
             'protect_brute_force'   => !empty($raw['protect_brute_force']) ? 1 : 0,
+            'protect_login_honeypot' => !empty($raw['protect_login_honeypot']) ? 1 : 0,
             'max_attempts'          => isset($raw['max_attempts']) ? max(1, min(50, (int) $raw['max_attempts'])) : $defaults['max_attempts'],
             'lockout_minutes'       => isset($raw['lockout_minutes']) ? max(1, min(1440, (int) $raw['lockout_minutes'])) : $defaults['lockout_minutes'],
             'ip_whitelist'          => isset($raw['ip_whitelist']) ? $this->sanitize_whitelist($raw['ip_whitelist']) : '',
@@ -176,6 +177,14 @@ class RLS_Settings
                         <td>
                             <label><input type="checkbox" name="rls_settings[protect_brute_force]" value="1" <?php checked($settings['protect_brute_force'], 1); ?>>
                                 <?php esc_html_e('Lock out IPs after too many failed login attempts', 'rest-login-shield'); ?></label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><?php esc_html_e('Login honeypot', 'rest-login-shield'); ?></th>
+                        <td>
+                            <label><input type="checkbox" name="rls_settings[protect_login_honeypot]" value="1" <?php checked($settings['protect_login_honeypot'], 1); ?>>
+                                <?php esc_html_e('Add a hidden field to login, registration, and password-reset forms; instantly block IPs that fill it', 'rest-login-shield'); ?></label>
+                            <p class="description"><?php esc_html_e('Human visitors never see the field, so a non-empty value is a confirmed bot. Triggered IPs are added to the lockout list immediately, regardless of how many attempts they made. Effective against distributed brute force from botnets where each IP only tries once.', 'rest-login-shield'); ?></p>
                         </td>
                     </tr>
                     <tr>

@@ -48,6 +48,9 @@ class RLS_Brute_Force
 
     public function on_failure($username)
     {
+        if (!empty($GLOBALS['rls_honeypot_handled'])) {
+            return;
+        }
         $ip = RLS_IP_Helper::get_client_ip($this->settings['trusted_proxy'] ?? 'none');
         if (!$ip || $this->is_whitelisted($ip)) {
             return;
@@ -96,6 +99,26 @@ class RLS_Brute_Force
         $table = $wpdb->prefix . 'rls_login_log';
         $wpdb->query(
             "DELETE FROM {$table} WHERE id NOT IN (SELECT id FROM (SELECT id FROM {$table} ORDER BY id DESC LIMIT 200) tmp)"
+        );
+    }
+
+    public static function record_honeypot_hit($ip, $username, array $settings)
+    {
+        $max_attempts    = max(1, (int) ($settings['max_attempts'] ?? 5));
+        $lockout_seconds = max(60, (int) ($settings['lockout_minutes'] ?? 30) * 60);
+        set_transient(self::TRANSIENT_PREFIX . md5($ip), $max_attempts, $lockout_seconds);
+
+        global $wpdb;
+        $table = $wpdb->prefix . 'rls_login_log';
+        $wpdb->insert(
+            $table,
+            [
+                'ip'           => $ip,
+                'username'     => mb_substr('[honeypot] ' . $username, 0, 60),
+                'attempted_at' => current_time('mysql'),
+                'blocked'      => 1,
+            ],
+            ['%s', '%s', '%s', '%d']
         );
     }
 

@@ -4,7 +4,7 @@ Tags: security, brute force, rest api, login, hardening
 Requires at least: 5.8
 Tested up to: 6.5
 Requires PHP: 7.4
-Stable tag: 1.2.1
+Stable tag: 1.3.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -21,7 +21,9 @@ REST & Login Shield is a small, zero-configuration security plugin that closes t
 * **Blocks author URL enumeration** — redirects `?author=N` requests and `/author/USERNAME/` archive pages to the home page with a 301, and masks usernames in RSS feeds (`<dc:creator>`).
 * **Brute force lockout** — after too many failed login attempts from one IP, blocks that IP for a configurable period. IP whitelist with CIDR support is included.
 
-**No bloat:** four protections, one settings page, no third-party calls, no telemetry. Works alongside Wordfence, iThemes Security, and similar plugins without conflicts.
+* **Login honeypot** — adds a hidden field to login, registration, and password-reset forms. Real users never see it, but bots that auto-fill every input are instantly added to the lockout list. Effective against distributed brute force from botnets where each IP only tries once and per-IP rate limiting cannot trigger.
+
+**No bloat:** five protections, one settings page, no third-party calls, no telemetry. Works alongside Wordfence, iThemes Security, and similar plugins without conflicts.
 
 **Languages:** English, Polish, Danish, German, Czech, Slovak, French.
 
@@ -54,6 +56,10 @@ Yes. The plugin reads the client IP from `CF-Connecting-IP`, `X-Real-IP`, or `X-
 Push a new tag or GitHub release to `weblixpl/rest-login-shield`. Within 12 hours, every site where the plugin is installed will show an update notification in the WordPress admin, exactly like a plugin from the official repository.
 
 == Changelog ==
+
+= 1.3.0 =
+* **New protection: Login honeypot** — adds a hidden text field to the login, registration, and password-reset forms. The field is positioned off-screen and marked with `tabindex="-1"`, `autocomplete="off"`, and `aria-hidden="true"`, so real visitors and password managers leave it blank. Bots that submit a value for it are flagged as confirmed bots and added to the IP lockout list immediately, regardless of how many login attempts they have actually made. This is the right defense against **distributed brute force**: when a botnet uses hundreds of IPs that each try the login form only once or twice, the per-IP rate limiter never triggers, but the honeypot catches them on the first request. Default: enabled. Toggle in Settings → REST & Login Shield → "Login honeypot".
+* Honeypot triggers are visible in the recent attempts log with a `[honeypot]` prefix on the username column, so admins can see at a glance which lockouts came from this rule rather than from the regular per-IP threshold.
 
 = 1.2.1 =
 * **Update channel moved off the GitHub API** — auto-update now reads a static `metadata.json` from GitHub Pages instead of calling `api.github.com`. The previous channel hit GitHub's 60-requests-per-hour-per-IP unauthenticated rate limit on shared hosting and triggered abuse detection when many client sites checked the same repository in the same window, leaving sites stuck on old versions with a "Could not determine if updates are available" error. The new channel is served from a static CDN with no rate limit, no token required, and no per-site configuration.
