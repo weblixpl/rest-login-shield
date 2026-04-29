@@ -59,3 +59,85 @@ jobs:
             "$ZIP_NAME" \
             --title "$TAG_NAME" \
             --notes-file "$NOTES_FILE"
+
+      - name: Generate update metadata
+        env:
+          TAG_NAME: ${{ github.ref_name }}
+          REPO: ${{ github.repository }}
+        run: |
+          VERSION="${TAG_NAME#v}"
+          ZIP_NAME="rest-login-shield-${VERSION}.zip"
+          DOWNLOAD_URL="https://github.com/${REPO}/releases/download/${TAG_NAME}/${ZIP_NAME}"
+          ZIP_SHA256=$(sha256sum "$ZIP_NAME" | awk '{print $1}')
+          ZIP_SIZE=$(stat -c%s "$ZIP_NAME")
+          LAST_UPDATED=$(date -u +"%Y-%m-%d %H:%M:%S")
+
+          REQUIRES=$(grep -oE "Requires at least:\s*[0-9.]+" readme.txt | awk '{print $3}')
+          TESTED=$(grep -oE "Tested up to:\s*[0-9.]+" readme.txt | awk '{print $3}')
+          REQUIRES_PHP=$(grep -oE "Requires PHP:\s*[0-9.]+" readme.txt | awk '{print $3}')
+
+          DESCRIPTION=$(awk '/^== Description ==/{flag=1; next} /^== /{flag=0} flag' readme.txt)
+          CHANGELOG=$(awk '/^== Changelog ==/{flag=1; next} flag' readme.txt)
+
+          mkdir -p _site
+          jq -n \
+            --arg name "REST & Login Shield" \
+            --arg slug "rest-login-shield" \
+            --arg version "$VERSION" \
+            --arg homepage "https://github.com/${REPO}" \
+            --arg download_url "$DOWNLOAD_URL" \
+            --arg author "<a href=\"https://github.com/weblixpl\">weblixpl</a>" \
+            --arg requires "$REQUIRES" \
+            --arg tested "$TESTED" \
+            --arg requires_php "$REQUIRES_PHP" \
+            --arg last_updated "$LAST_UPDATED" \
+            --arg sha256 "$ZIP_SHA256" \
+            --argjson size "$ZIP_SIZE" \
+            --arg description "$DESCRIPTION" \
+            --arg changelog "$CHANGELOG" \
+            '{
+              name: $name,
+              slug: $slug,
+              version: $version,
+              homepage: $homepage,
+              download_url: $download_url,
+              author: $author,
+              requires: $requires,
+              tested: $tested,
+              requires_php: $requires_php,
+              last_updated: $last_updated,
+              sections: {
+                description: $description,
+                changelog: $changelog
+              },
+              sha256: $sha256,
+              package_size: $size
+            }' > _site/metadata.json
+
+          cat > _site/index.html <<'HTMLEOF'
+          <!doctype html>
+          <html lang="en"><head><meta charset="utf-8">
+          <title>REST &amp; Login Shield - update channel</title>
+          <meta name="robots" content="noindex,nofollow">
+          <style>body{font-family:system-ui,sans-serif;max-width:48rem;margin:4rem auto;padding:0 1rem;color:#222}code{background:#f3f3f3;padding:.2em .4em;border-radius:.3em}</style>
+          </head><body>
+          <h1>REST &amp; Login Shield - update channel</h1>
+          <p>Static update metadata consumed by the WordPress plugin. See <a href="metadata.json"><code>metadata.json</code></a>.</p>
+          <p>Source: <a href="https://github.com/weblixpl/rest-login-shield">github.com/weblixpl/rest-login-shield</a></p>
+          </body></html>
+          HTMLEOF
+
+          touch _site/.nojekyll
+          echo "--- metadata.json ---"
+          jq '.' _site/metadata.json | head -40
+
+      - name: Publish update channel to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site
+          publish_branch: gh-pages
+          force_orphan: true
+          commit_message: "Publish update channel for ${{ github.ref_name }}"
+          user_name: "github-actions[bot]"
+          user_email: "github-actions[bot]@users.noreply.github.com"

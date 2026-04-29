@@ -4,7 +4,7 @@ Tags: security, brute force, rest api, login, hardening
 Requires at least: 5.8
 Tested up to: 6.5
 Requires PHP: 7.4
-Stable tag: 1.2.0
+Stable tag: 1.2.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -54,6 +54,10 @@ Yes. The plugin reads the client IP from `CF-Connecting-IP`, `X-Real-IP`, or `X-
 Push a new tag or GitHub release to `weblixpl/rest-login-shield`. Within 12 hours, every site where the plugin is installed will show an update notification in the WordPress admin, exactly like a plugin from the official repository.
 
 == Changelog ==
+
+= 1.2.1 =
+* **Update channel moved off the GitHub API** — auto-update now reads a static `metadata.json` from GitHub Pages instead of calling `api.github.com`. The previous channel hit GitHub's 60-requests-per-hour-per-IP unauthenticated rate limit on shared hosting and triggered abuse detection when many client sites checked the same repository in the same window, leaving sites stuck on old versions with a "Could not determine if updates are available" error. The new channel is served from a static CDN with no rate limit, no token required, and no per-site configuration.
+* No behavior changes, no settings changes. After upgrading once, every future release will be picked up automatically.
 
 = 1.2.0 =
 * **Security fix**: author enumeration protection was incomplete. With the toggle enabled, `?author=N` was still being redirected by WordPress core's canonical redirect to `/author/USERNAME/` before the plugin could intercept, leaking the user login. The handler now runs at priority 1 on `template_redirect` and additionally hooks `redirect_canonical` to override core's behavior.
